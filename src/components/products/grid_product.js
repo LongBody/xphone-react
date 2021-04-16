@@ -10,7 +10,7 @@ function GridProduct(props) {
     if (props) {
         result = props.product.map((item, index) => {
             return (
-                <Grid item xs={12} sm={4} md={4} lg={3} className="remove__padding__grid" key={index}>
+                <Grid item xs={12} sm={4} md={4} lg={3} className="remove__padding__grid background__item" key={index}>
                     <div className="product__item">
                         <div className="product__detail">
                             <img src={item.image} alt="" className="product__image" /> {item.sale > 15 ? <span> <img src="https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/hot_sale_discount-512.png" alt="" className="product__image__sale" /></span> : ""}

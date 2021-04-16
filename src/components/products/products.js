@@ -70,7 +70,7 @@ function Product() {
         },
     ]
     return (
-        <div>
+        <div className="background__item ">
             <GridProduct product={product} />
         </div>
 
