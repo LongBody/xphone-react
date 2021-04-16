@@ -69,7 +69,6 @@ function Product() {
             "feedback": 120
         },
     ]
-
     return (
         <div>
             <GridProduct product={product} />

@@ -1,0 +1,20 @@
+.body__container {
+    padding-top: 100px;
+    .padding__fixed {
+        padding-top: 50px;
+    }
+}
+
+.title__section__container {
+    margin-top: 40px;
+    width: 100%;
+    border: 1px solid #eee;
+    .title__section {
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: sans-serif;
+        color: #333;
+        text-transform: uppercase;
+    }
+}
