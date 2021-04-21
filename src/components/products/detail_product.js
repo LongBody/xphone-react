@@ -43,7 +43,7 @@ function Product(props) {
                 <h1>Điện thoại iPhone 12 Pro Max 128GB</h1>
                 <hr style={{ backgroundColor: "rgb(223, 223, 223)", marginBottom: 10 }} />
                 <Grid container xs={12} sm={6} md={12} lg={12} direction="row" >
-                    <Grid item xs={12} sm={4} md={4} lg={4}  >
+                    <Grid item xs={12} sm={4} md={4} lg={4}>
                         <div>
                             <img className="image__product" src={image} alt="" />
                         </div>
