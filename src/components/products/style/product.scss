@@ -86,3 +86,104 @@
 .background__item {
     background-color: #FFFFFF;
 }
+
+.product__version__container {
+    border: 1px solid rgb(224, 222, 222);
+    width: 100%;
+    .product__version__price {
+        padding: 0px 0px 5px 15px;
+        margin: 0px !important;
+    }
+}
+
+.btn__payment__container {
+    padding-top: 20px;
+    width: 100%;
+    .btn__payment {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+        border: none;
+        box-shadow: 0 0 20px #eee;
+        font-size: 14px;
+        transition: 0.5s;
+        background-size: 200% auto;
+        &:hover {
+            background-position: right center;
+        }
+        &:active {
+            transition: background-size 0
+        }
+    }
+}
+
+.product__detail__warranty {
+    margin-left: 40px;
+    border: 1px solid rgb(224, 222, 222);
+    width: 80%;
+    margin-top: 27px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: sans-serif;
+    .product__detail__warranty__item {
+        padding: 3px;
+    }
+    .icon__full__box {
+        font-size: 12px;
+        margin-right: 5px;
+        color: rgb(19, 153, 216);
+    }
+    .icon__award {
+        font-size: 15px;
+        color: rgb(19, 153, 216);
+        margin-left: 2px;
+        margin-right: 10px;
+    }
+    .icon__change {
+        font-size: 13px;
+        color: rgb(19, 153, 216);
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+}
+
+.product__promotion__container {
+    border: 1px solid rgb(224, 222, 222);
+    width: 100%;
+    margin-top: 15px;
+    font-size: 14px;
+    font-family: sans-serif;
+    .product__promotion__item {
+        padding: 10px;
+    }
+    .product__promotion__item__icon {
+        padding: 4px 0px;
+        width: 40%;
+        color: red;
+    }
+    .product__promotion__item__title {
+        padding: 3px 0px;
+        font-family: sans-serif;
+    }
+}
+
+.product__detail__parameter {
+    .product__detail__parameter__title {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    font-family: sans-serif;
+    margin-left: 40px;
+    border: 1px solid rgb(224, 222, 222);
+    width: 80%;
+    margin-top: 27px;
+    padding: 10px;
+    font-size: 14px;
+    .product__detail__parameter__item {
+        padding: 8px 0px;
+    }
+}

@@ -41,7 +41,7 @@ function GridProduct(props) {
     return (
 
         <div>
-            <Grid container spacing={0} xs={12} sm={6} md={12} lg={12} direction="row" >
+            <Grid container xs={12} sm={6} md={12} lg={12} direction="row" >
                 {result}
             </Grid>
 

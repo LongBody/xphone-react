@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './footer.scss'
 import { Container } from '@material-ui/core';
-import Logo from './logo.png'
 import Logo1 from '../../image/members/long.jpg'
 import Logo2 from '../../image/members/quang.jpg'
 import Logo3 from '../../image/members/saral.jpg'
@@ -20,7 +19,7 @@ const Footer = () => {
                     <div className="footer__up__element">
                         <a href='https://www.google.com' target='blank'>DV vệ sinh máy lạnh, máy giặt, quạt</a>
                         <a href='https://www.google.com' target='blank'>Lịch sử mua hàng</a>
-                        <a href='https://www.google.com' target='blank'>Đăng ký làm đại lý cho TGDĐ</a>
+                        <a href='https://www.google.com' target='blank'>Đăng ký làm đại lý cho XPhone</a>
                         <a href='https://www.google.com' target='blank'>Tìm hiểu về mua trả góp</a>
                         <a href='https://www.google.com' target='blank'>Chính sách bảo hành</a>
                         <a href='https://www.google.com' target='blank'>Chính sách đổi trả</a>

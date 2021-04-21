@@ -3,16 +3,16 @@ import Header from '../components/header/header'
 import Body from '../components/body/body';
 import Footer from '../components/footer/footer'
 
-function FlashSale() {
+function HomePage() {
 
     return (
         <div>
             <Header />
             <Body />
-            <Footer/>
+            <Footer />
         </div>
 
     );
 }
 
-export default FlashSale;
+export default HomePage;
