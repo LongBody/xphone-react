@@ -12,8 +12,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Container } from '@material-ui/core';
+import {Link} from 'react-router-dom'
 import Logo from '../../image/xphone.png'
+
 import './header.scss'
 
 const useStyles = makeStyles((theme) => ({
@@ -193,6 +196,14 @@ export default function PrimarySearchAppBar() {
                         </div>
                         <div className={classes.grow_modify} />
                         <div className={classes.sectionDesktop} style={{ float: "right" }}>
+                            <Link  to='/cart' style={{color:'#fff'}} >
+                            <IconButton aria-label="show 1 new cart" color="inherit">
+                                <Badge badgeContent={1} color="secondary">
+                                    <ShoppingCartIcon />
+                                </Badge>
+                            </IconButton>
+                            </Link>
+                            
                             <IconButton aria-label="show 4 new mails" color="inherit">
                                 <Badge badgeContent={4} color="secondary">
                                     <MailIcon />

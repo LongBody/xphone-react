@@ -1,0 +1,26 @@
+.link{
+    text-decoration: none;
+    color: #2177cc;
+    transition: all 0.3s;
+    &:hover{
+        color: #2c3e50;
+    }
+}
+
+.cart__container{
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 15px 35px;
+}
+
+.image{
+    height: 70px;
+    
+}
+
+.form__last{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+

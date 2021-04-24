@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import HomePage from '../pages/homepage'
 import DetailProduct from '../pages/detail_product'
-
+import CartPage from '../pages/CartPage'
 class Routes extends Component {
 
 
@@ -11,6 +11,7 @@ class Routes extends Component {
             <Switch>
                 <Route exact path="/" component={HomePage}></Route>
                 <Route exact path="/product" component={DetailProduct}></Route>
+                <Route exact path='/cart' component={CartPage}></Route>
                 {/* <Route component={NotFound}></Route> */}
             </Switch>
         )

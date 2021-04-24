@@ -23,7 +23,7 @@ const Footer = () => {
                         <a href='https://www.google.com' target='blank'>Tìm hiểu về mua trả góp</a>
                         <a href='https://www.google.com' target='blank'>Chính sách bảo hành</a>
                         <a href='https://www.google.com' target='blank'>Chính sách đổi trả</a>
-                        {!seeMore ? <span onClick={e => setSeeMore(true)}>Show More <i className="fas fa-chevron-down"></i></span> :
+                        {!seeMore ? <span onClick={() => setSeeMore(true)}>Show More <i className="fas fa-chevron-down"></i></span> :
                             <>
                                 <a href='https://www.google.com' target='blank'>Giao hàng, lắp đặt</a>
                                 <a href='https://www.google.com' target='blank'>Hướng dẫn mua online</a>
