@@ -15,7 +15,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Container } from '@material-ui/core';
 import {Link} from 'react-router-dom'
-import Logo from '../../image/xphone.png'
+import Logo from '../../image/xphone.png';
 
 import './header.scss'
 
