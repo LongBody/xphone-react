@@ -6,3 +6,11 @@ export const changeProductVersion = (version) => {
         version
     }
 }
+
+
+export const idProductView = (id) => {
+    return {
+        type: types.VIEW_PRODUCT_DETAIL,
+        id
+    }
+}

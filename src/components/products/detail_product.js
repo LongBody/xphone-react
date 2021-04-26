@@ -1,59 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
 import ProductVersion from '../products/product_version'
 import { connect } from 'react-redux'
 import './style/detail_product.scss'
+import { callApi } from '../../apis/api'
+import * as actions from '../../actions/productActions'
 function Product(props) {
 
-    let products = [
-        {
-            "image": "https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xanh-duong-new-600x600-600x600.jpg",
-            "color": "Xanh Dương",
-        },
-        {
-            "image": "https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-vang-new-600x600-200x200.jpg",
-            "color": "Vàng đồng",
-        }, {
-            "image": "https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-trang-bac-600x600-200x200.jpg",
-            "color": "Bạc",
-        }, {
-            "image": "https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xam-new-600x600-200x200.jpg",
-            "color": "Xám",
+
+    const [product, setProduct] = useState([])
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const callApiData = await callApi("product/" + props.idProduct).then(async (response) => {
+                let data = await response.data;
+                document.title = data.title + " " + data.version[0].cap + " | XPhone Việt Nam"
+
+                return data
+            })
+
+            await setImage(callApiData.color[0].imageURL);
+            await setProduct(callApiData)
+            await props.changeProductVersion(callApiData.version[0].cap)
+
+
         }
-    ]
+        fetchData()
+    }, []);
+    const [image, setImage] = useState("")
+    let productColor = []
+    var size = Object.keys(product).length;
+    if (size > 0) {
+        productColor = product.color.map((item, index) => {
+            return (
 
-    const [image, setImage] = useState("https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xanh-duong-new-600x600-600x600.jpg")
+                <div key={index}>
+                    <img className="product__color__image" onClick={() => handleChangeImage(item.imageURL)} src={item.imageURL} alt="" />
+                    <div className="product__color__name">{item.color}</div>
+                </div>
 
+            )
+        })
+    }
 
-    let productColor = products.map((item, index) => {
-        return (
-
-            <div key={index}>
-                <img className="product__color__image" onClick={() => handleChangeImage(item.image)} src={item.image} alt="" />
-                <div className="product__color__name">{item.color}</div>
-            </div>
-
-        )
-    })
     return (
         <div className="detail__product__container">
             <Container >
-                <div>Điện thoại IPhone</div>
-                <h1>Điện thoại iPhone 12 Pro Max 128GB</h1>
+                <div>Điện thoại {size > 0 ? product.brand : ""}</div>
+                <h1>{size > 0 ? product.title + " " + product.version[0].cap : ""}</h1>
                 <hr style={{ backgroundColor: "rgb(223, 223, 223)", marginBottom: 10 }} />
                 <Grid container xs={12} sm={6} md={12} lg={12} direction="row" >
                     <Grid item xs={12} sm={4} md={4} lg={4}>
                         <div>
-                            <img className="image__product" src={image} alt="" />
+                            {
+                                image !== "" ?
+                                    <img className="image__product" src={image} alt="" />
+                                    : "Loading..."
+                            }
                         </div>
                         <div className="product__color__container">
-                            {productColor}
+                            {size > 0 > 0 ? productColor : "Loading..."}
                         </div>
                     </Grid >
                     <Grid item xs={12} sm={4} md={4} lg={4}  >
-                        <div style={{ paddingBottom: 10 }}>Bạn đang xem phiên bản: <b>{props.productVersion}GB</b></div>
-                        <ProductVersion />
+                        <div style={{ paddingBottom: 10 }}>Bạn đang xem phiên bản: <b>{props.productVersion !== "" ? props.productVersion : ""}</b></div>
+                        <ProductVersion version={size > 0 ? product.version : []} />
                         <div className="product__promotion__container">
                             <div className="product__promotion__item">
                                 <div className="product__promotion__item__icon">
@@ -97,63 +110,63 @@ function Product(props) {
                                     Màn hình
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    OLED, 6.7", Super Retina XDR
+                                    {product.screen}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     Hệ điều hành:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    iOS 14
+                                    {product.os}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     Camera sau:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    3 camera 12 MP
+                                    {product.rearCamera}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     Camera trước:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    12 MP
+                                    {product.frontCamera}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     Chip:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    Apple A14 Bionic
+                                    {product.chip}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     RAM:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    6 GB
+                                    {product.ram}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     Bộ nhớ trong:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    128 GB
+                                    {props.productVersion}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     SIM:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    1 Nano SIM & 1 eSIM, Hỗ trợ 5G
+                                    {product.sim}
                                 </Grid >
                                 <div style={{ width: "100%", height: 1, backgroundColor: "rgb(223, 223, 223)" }}></div>
                                 <Grid item xs={12} sm={4} md={4} lg={4} className="product__detail__parameter__item">
                                     Pin:
                                 </Grid >
                                 <Grid item xs={12} sm={4} md={4} lg={8} className="product__detail__parameter__item">
-                                    3687 mAh, Sạc nhanh
+                                    {product.pin}
                                 </Grid >
                             </Grid>
                         </div>
@@ -174,4 +187,12 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, null)(Product);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        changeProductVersion: (version) => {
+            dispatch(actions.changeProductVersion(version))
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

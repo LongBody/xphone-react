@@ -19,3 +19,9 @@
         text-transform: uppercase;
     }
 }
+
+@media screen and (max-width:790px) {
+    .banner__image {
+        padding-top: 30px;
+    }
+}

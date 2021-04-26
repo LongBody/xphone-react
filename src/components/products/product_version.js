@@ -19,7 +19,7 @@ const GreenRadio = withStyles({
 
 function ProductVersion(props) {
 
-    const [selectedValue, setSelectedValue] = useState('128')
+    const [selectedValue, setSelectedValue] = useState('128GB')
     function handleChange(event) {
         setSelectedValue(event);
         props.changeProductVersion(event);
@@ -31,46 +31,51 @@ function ProductVersion(props) {
         slidesToShow: 2,
         slidesToScroll: 1
     };
+
+    const settings_2 = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
+
+    let productVersion = []
+    if (props.version.length > 0) {
+
+        productVersion = props.version.map((item, index) => {
+            return (
+                <div className="product__version__container">
+                    <div>
+                        <GreenRadio
+                            checked={selectedValue === props.productVersion && selectedValue === item.cap}
+                            onChange={() => handleChange(item.cap)}
+                            value={item.cap}
+                            name="radio-button-demo"
+                            inputProps={{ 'aria-label': item.cap }}
+                        />{item.cap}
+                        <p className="product__version__price">{item.price}</p>
+                    </div>
+                </div>
+            )
+        })
+    }
+
+
     return (
         <div>
-            <Slider {...settings} >
-                <div className="product__version__container">
-                    <div>
-                        <GreenRadio
-                            checked={selectedValue === '128'}
-                            onChange={() => handleChange('128')}
-                            value="128"
-                            name="radio-button-demo"
-                            inputProps={{ 'aria-label': '128' }}
-                        />128GB
-                    <p className="product__version__price">30.800.000</p>
-                    </div>
-                </div>
-                <div className="product__version__container">
-                    <div>
-                        <GreenRadio
-                            checked={selectedValue === '256'}
-                            onChange={() => handleChange('256')}
-                            value="256"
-                            name="radio-button-demo"
-                            inputProps={{ 'aria-label': '256' }}
-                        />256GB
-                    <p className="product__version__price">33.890.000</p>
-                    </div>
-                </div>
-                <div className="product__version__container">
-                    <div>
-                        <GreenRadio
-                            checked={selectedValue === '512'}
-                            onChange={() => handleChange('512')}
-                            value="512"
-                            name="radio-button-demo"
-                            inputProps={{ 'aria-label': '512' }}
-                        />512GB
-                    <p className="product__version__price">41.490.000</p>
-                    </div>
-                </div>
-            </Slider>
+            {
+                props.version.length === 1 ?
+                    <Slider {...settings_2} >
+
+                        {productVersion}
+                    </Slider>
+                    :
+                    <Slider {...settings} >
+
+                        {productVersion}
+                    </Slider>
+            }
         </div>
     );
 }

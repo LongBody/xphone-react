@@ -14,6 +14,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Container } from '@material-ui/core';
 import Logo from '../../image/xphone.png'
+import { Link } from 'react-router-dom'
 import './header.scss'
 
 const useStyles = makeStyles((theme) => ({
@@ -177,7 +178,9 @@ export default function PrimarySearchAppBar() {
             <Container>
                 <AppBar position="static" className="appbar__container">
                     <Toolbar>
-                        <img src={Logo} alt="" style={{ height: 90 }} />
+                        <Link to={{ pathname: "/" }}>
+                            <img src={Logo} alt="" style={{ height: 90 }} />
+                        </Link >
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon />

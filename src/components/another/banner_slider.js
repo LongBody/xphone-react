@@ -30,10 +30,10 @@ function Banner() {
             }}
             pagination={{ clickable: true }}
         >
-            <SwiperSlide> <LazyLoadImage effect="blur" style={{ width: "100%", height: 220, }} src={banner_1} /></SwiperSlide>
-            <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 220, }} src={banner_2} /></SwiperSlide>
-            <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 220, }} src={banner_3} /></SwiperSlide>
-            <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 220, }} src={banner_4} /></SwiperSlide>
+            <SwiperSlide> <LazyLoadImage effect="blur" className="image__slider" src={banner_1} /></SwiperSlide>
+            <SwiperSlide><LazyLoadImage effect="blur" className="image__slider" src={banner_2} /></SwiperSlide>
+            <SwiperSlide><LazyLoadImage effect="blur" className="image__slider" src={banner_3} /></SwiperSlide>
+            <SwiperSlide><LazyLoadImage effect="blur" className="image__slider" src={banner_4} /></SwiperSlide>
         </Swiper>
     );
 };

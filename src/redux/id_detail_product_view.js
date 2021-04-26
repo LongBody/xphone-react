@@ -7,8 +7,8 @@ const initialState = ""
 
 const myReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.CHANGE_PRODUCT_VERSION:
-            state = action.version
+        case types.VIEW_PRODUCT_DETAIL:
+            state = action.id
             return state
         default:
             return state
